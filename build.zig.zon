@@ -1,5 +1,5 @@
 .{
     .name = "builddef",
     .version = "0.0.0",
-    .paths = .{ "build.zig", "build.zig.zon", "src" },
+    .paths = .{ "src", "build.zig", "build.zig.zon" },
 }
