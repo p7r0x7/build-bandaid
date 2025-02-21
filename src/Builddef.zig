@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright © 2024 Maxine R Bonnette. All rights reserved.
+// Copyright © 2025 Maxine R Bonnette. All rights reserved.
 
 const fs = @import("std").fs;
 const fmt = @import("std").fmt;
@@ -49,7 +49,7 @@ pub fn compile(def: *@This(), step: anytype, name: []const u8, root: ?[]const u8
         .name = name,
         .pic = true,
     });
-    comp.want_lto = !target.result.isDarwin(); // https://github.com/ziglang/zig/issues/8680
+    comp.want_lto = !target.result.os.tag.isDarwin(); // https://github.com/ziglang/zig/issues/8680
     comp.compress_debug_sections = .zstd;
     comp.link_function_sections = true;
     comp.link_data_sections = true;
