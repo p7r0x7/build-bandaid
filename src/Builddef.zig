@@ -33,6 +33,7 @@ pub fn universalSettings(def: *@This(), target: Target) void {
 
 pub fn runArtifact(def: *@This(), comp: *Compile, args: []const []const u8) *Build.Step.Run {
     const run = def.build.addRunArtifact(comp);
+    run.step.dependOn(&comp.step);
     run.addArgs(args);
     return run;
 }
