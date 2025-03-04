@@ -39,11 +39,11 @@ pub fn runArtifact(def: *@This(), comp: *Compile, args: []const []const u8) *Bui
 
 pub fn compile(def: *@This(), step: anytype, name: []const u8, root: ?[]const u8, target: Target, optimize: Mode) *Compile {
     const comp = step(def.build, .{
-        .error_tracing = optimize == .ReleaseSafe or optimize == .Debug,
+        .omit_frame_pointer = optimize == .Debug or optimize == .ReleaseSafe,
+        .error_tracing = optimize == .Debug or optimize == .ReleaseSafe,
         .strip = optimize == .ReleaseFast or optimize == .ReleaseSmall,
         .root_source_file = if (root) |v| def.build.path(v) else null,
         .unwind_tables = if (optimize == .Debug) .sync else .none,
-        .omit_frame_pointer = optimize != .Debug,
         .optimize = optimize,
         .target = target,
         .name = name,
