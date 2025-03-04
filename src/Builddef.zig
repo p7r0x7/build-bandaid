@@ -31,10 +31,10 @@ pub fn universalSettings(def: *@This(), target: Target) void {
     def.build.enable_rosetta = t and target.result.os.tag == .macos;
 }
 
-pub fn runArtifact(def: *@This(), comp: *Compile, args: []const []const u8) *Build.Step.Run {
+pub fn runArtifact(def: *@This(), comp: *Compile, args: ?[]const []const u8) *Build.Step.Run {
     const run = def.build.addRunArtifact(comp);
     run.step.dependOn(&comp.step);
-    run.addArgs(args);
+    if (args) |v| run.addArgs(v);
     return run;
 }
 
