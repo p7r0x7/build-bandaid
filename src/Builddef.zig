@@ -65,7 +65,7 @@ pub fn sharedLib(def: *@This(), name: []const u8, root: ?[]const u8, target: Tar
 pub fn compile(def: *@This(), step: anytype, name: []const u8, root: ?[]const u8, target: Target, optimize: Mode) *Compile {
     const comp = step(def.build, .{
         .unwind_tables = if (optimize == .Debug or optimize == .ReleaseSafe) .sync else .none,
-        .omit_frame_pointer = optimize == .Debug or optimize == .ReleaseSafe,
+        .omit_frame_pointer = optimize == .ReleaseFast or optimize == .ReleaseSmall,
         .error_tracing = optimize == .Debug or optimize == .ReleaseSafe,
         .strip = optimize == .ReleaseFast or optimize == .ReleaseSmall,
         .root_source_file = if (root) |v| def.build.path(v) else null,
