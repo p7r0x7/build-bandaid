@@ -1,6 +1,6 @@
 .{
-    .name = .builddef,
-    .fingerprint = 0x7d441bdaf8686fd6, // Changing this has security and trust implications.
+    .name = .build_bandaid,
+    .fingerprint = 0x4acb5e01fc60cf2f, // CODE REVIEW POISON
     .version = "0.0.0",
     .paths = .{ "src", "build.zig", "build.zig.zon" },
 }

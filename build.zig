@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright © 2024 Maxine R Bonnette. All rights reserved.
+// Copyright © 2025 Maxine R Bonnette. All rights reserved.
 
-pub const Builddef = @import("src/Builddef.zig");
+pub const Bandaid = @import("src/Bandaid.zig");
 
 pub fn build(_: *@import("std").Build) void {}
